@@ -1,0 +1,1490 @@
+{
+	"id": "a30c4f3a-b86d-4ab6-9c58-f6d7e8e048f7",
+	"name": "Spotify Api Testing",
+	"timestamp": "2024-06-04T12:56:35.447Z",
+	"collection_id": "33853202-b43a0fa2-aef1-4324-8ce3-aef07318c885",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 153,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-06-04T12:56:22.801Z",
+	"totalFail": 43,
+	"results": [
+		{
+			"id": "eb2ead34-0bca-427f-9782-dec304701d92",
+			"name": "Episodes",
+			"url": "https://api.spotify.com/v1/episodes/512ojhOuo1ktJprKbVcKyQ",
+			"time": 135,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Content-Type is application/json": true,
+				"Show object should exist and be an object": true,
+				"Images array is present and contains expected number of elements": true,
+				"Name is a non-empty string": true,
+				"Duration_ms is a non-negative integer": true,
+				"Explicit field should be a boolean value": true,
+				"Release date should be in a valid date format": true,
+				"Show object has a non-empty name field": true,
+				"External_urls should have a valid Spotify URL": true,
+				"Audio preview URL is a valid URL": true,
+				"Description is a non-empty string": true,
+				"Images array contains valid URLs for each image": true,
+				"Language field should be a non-empty string": true,
+				"External URLs object should not be empty": true,
+				"Languages array should contain at least one language": true,
+				"External URLs should have a valid Spotify URL": true,
+				"External URLs object contains a valid Spotify URL": true,
+				"Is_playable field should be a boolean value": true,
+				"Release_date_precision should be a valid precision value": true,
+				"Total_episodes under show should be a non-negative integer": true,
+				"All images should have non-negative integer values for height and width": true,
+				"ID field should be a non-empty string": true,
+				"Href field should be a valid URL": true,
+				"Uri field is a valid Spotify URI": true,
+				"Show object has a non-empty description field": true,
+				"Response time is less than 200ms": true,
+				"Response status code is 401": false,
+				"Response contains Content-Type header": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Show object should exist and be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Images array is present and contains expected number of elements": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Duration_ms is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Explicit field should be a boolean value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Release date should be in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Show object has a non-empty name field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External_urls should have a valid Spotify URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Audio preview URL is a valid URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Description is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Images array contains valid URLs for each image": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Language field should be a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External URLs object should not be empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Languages array should contain at least one language": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External URLs should have a valid Spotify URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External URLs object contains a valid Spotify URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Is_playable field should be a boolean value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Release_date_precision should be a valid precision value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Total_episodes under show should be a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"All images should have non-negative integer values for height and width": {
+					"pass": 1,
+					"fail": 0
+				},
+				"ID field should be a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Href field should be a valid URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Uri field is a valid Spotify URI": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Show object has a non-empty description field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response status code is 401": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response contains Content-Type header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				135
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Content-Type is application/json": true,
+					"Show object should exist and be an object": true,
+					"Images array is present and contains expected number of elements": true,
+					"Name is a non-empty string": true,
+					"Duration_ms is a non-negative integer": true,
+					"Explicit field should be a boolean value": true,
+					"Release date should be in a valid date format": true,
+					"Show object has a non-empty name field": true,
+					"External_urls should have a valid Spotify URL": true,
+					"Audio preview URL is a valid URL": true,
+					"Description is a non-empty string": true,
+					"Images array contains valid URLs for each image": true,
+					"Language field should be a non-empty string": true,
+					"External URLs object should not be empty": true,
+					"Languages array should contain at least one language": true,
+					"External URLs should have a valid Spotify URL": true,
+					"External URLs object contains a valid Spotify URL": true,
+					"Is_playable field should be a boolean value": true,
+					"Release_date_precision should be a valid precision value": true,
+					"Total_episodes under show should be a non-negative integer": true,
+					"All images should have non-negative integer values for height and width": true,
+					"ID field should be a non-empty string": true,
+					"Href field should be a valid URL": true,
+					"Uri field is a valid Spotify URI": true,
+					"Show object has a non-empty description field": true,
+					"Response time is less than 200ms": true,
+					"Response status code is 401": false,
+					"Response contains Content-Type header": true
+				}
+			]
+		},
+		{
+			"id": "6401e0a5-faec-4571-8f56-3ff9197400fb",
+			"name": "Several Episodes",
+			"url": "https://api.spotify.com/v1/episodes?ids=77o6BIVlYM3msb4MMIL1jH%2C0Q86acNRm6V9GYx55SXKwf",
+			"time": 144,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Explicit is true for both episodes and show": false,
+				"Content-Type header is application/json": true,
+				"Response includes episodes array with at least one element": true,
+				"Each episode has a non-empty name": true,
+				"Release date is in a valid date format": true,
+				"Each episode has a valid image URL": true,
+				"Each episode id should be a non-empty string": true,
+				"External URLs for each episode and the show are valid URLs": false,
+				"Description for each episode and the show is a non-empty string": true,
+				"Duration_ms for each episode is a non-negative integer": true,
+				"Show has a non-empty name": false,
+				"Each episode has a non-empty language": true,
+				"Images array for each episode and show contains the expected number of elements": false,
+				"Languages array must contain at least one element for each episode and show": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Explicit is true for both episodes and show": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response includes episodes array with at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each episode has a non-empty name": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Release date is in a valid date format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each episode has a valid image URL": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each episode id should be a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External URLs for each episode and the show are valid URLs": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Description for each episode and the show is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Duration_ms for each episode is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Show has a non-empty name": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Each episode has a non-empty language": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Images array for each episode and show contains the expected number of elements": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Languages array must contain at least one element for each episode and show": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				144
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Explicit is true for both episodes and show": false,
+					"Content-Type header is application/json": true,
+					"Response includes episodes array with at least one element": true,
+					"Each episode has a non-empty name": true,
+					"Release date is in a valid date format": true,
+					"Each episode has a valid image URL": true,
+					"Each episode id should be a non-empty string": true,
+					"External URLs for each episode and the show are valid URLs": false,
+					"Description for each episode and the show is a non-empty string": true,
+					"Duration_ms for each episode is a non-negative integer": true,
+					"Show has a non-empty name": false,
+					"Each episode has a non-empty language": true,
+					"Images array for each episode and show contains the expected number of elements": false,
+					"Languages array must contain at least one element for each episode and show": false
+				}
+			]
+		},
+		{
+			"id": "2d4c54ac-206d-4250-8240-3b0b44367cc6",
+			"name": "Get User's Saved Episodes",
+			"url": "https://api.spotify.com/v1/me/episodes?market=ES&limit=10&offset=5",
+			"time": 71,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				71
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b02ae8cf-2673-45ab-9c79-71d09fc8d7ac",
+			"name": "Available Genre Seeds",
+			"url": "https://api.spotify.com/v1/recommendations/available-genre-seeds",
+			"time": 83,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 200ms": true,
+				"Genres array is present and not empty": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Genres array is present and not empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				83
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 200ms": true,
+					"Genres array is present and not empty": true
+				}
+			]
+		},
+		{
+			"id": "e41de077-c67a-424f-99a1-4235e9315a7a",
+			"name": "Available Markets",
+			"url": "https://api.spotify.com/v1/markets",
+			"time": 62,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 300ms": true,
+				"Content-Type header is application/json": true,
+				"Response has the required fields": true,
+				"The markets array should not be empty": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 300ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The markets array should not be empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				62
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 300ms": true,
+					"Content-Type header is application/json": true,
+					"Response has the required fields": true,
+					"The markets array should not be empty": true
+				}
+			]
+		},
+		{
+			"id": "1b24cfcd-fca9-43ac-bc58-a60aebf924f6",
+			"name": "Playlist",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6",
+			"time": 135,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 200ms": true,
+				"Valid Content-Type header is present": false,
+				"Response body contains a non-empty 'id' field": true,
+				"Response body contains a specific error code": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Valid Content-Type header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response body contains a non-empty 'id' field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains a specific error code": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				135
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 200ms": true,
+					"Valid Content-Type header is present": false,
+					"Response body contains a non-empty 'id' field": true,
+					"Response body contains a specific error code": false
+				}
+			]
+		},
+		{
+			"id": "c3ba64d3-2ebb-4509-b630-116dea490d55",
+			"name": "Change Playlist Details",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6",
+			"time": 125,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 200ms": true,
+				"Response content type is text/xml": false,
+				"Response body is not null": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response content type is text/xml": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response body is not null": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				125
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 200ms": true,
+					"Response content type is text/xml": false,
+					"Response body is not null": false
+				}
+			]
+		},
+		{
+			"id": "8f242b17-4135-4360-a3bc-fa7f31264e4e",
+			"name": "Get Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+			"time": 132,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response Content-Type is application/json": true,
+				"Response time is in an acceptable range": true,
+				"Each item in the items array has the required properties": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Content-Type is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is in an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each item in the items array has the required properties": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				132
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response Content-Type is application/json": true,
+					"Response time is in an acceptable range": true,
+					"Each item in the items array has the required properties": false
+				}
+			]
+		},
+		{
+			"id": "64295275-8b1d-4420-a858-7eaf95317b56",
+			"name": "Update Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+			"time": 131,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response status code is 200": false,
+				"Response has the required fields": false,
+				"Snapshot_id is a non-empty string": false,
+				"Content-Type header is application/json": true,
+				"Response time is less than 200ms": true,
+				"Valid specific header is present": false,
+				"Validate response body against a specific schema": false,
+				"Snapshot_id is not an empty string": true,
+				"Response content type is application/json": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Snapshot_id is a non-empty string": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Valid specific header is present": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate response body against a specific schema": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Snapshot_id is not an empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response content type is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				131
+			],
+			"allTests": [
+				{
+					"Response status code is 200": false,
+					"Response has the required fields": false,
+					"Snapshot_id is a non-empty string": false,
+					"Content-Type header is application/json": true,
+					"Response time is less than 200ms": true,
+					"Valid specific header is present": false,
+					"Validate response body against a specific schema": false,
+					"Snapshot_id is not an empty string": true,
+					"Response content type is application/json": true
+				}
+			]
+		},
+		{
+			"id": "8fd5d437-b56e-45f2-ab75-408814797930",
+			"name": "Add Items to Playlist",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+			"time": 185,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 200ms": true,
+				"Response has the required fields": true,
+				"Snapshot_id is a non-empty string": true,
+				"Content-Type header is application/json": true,
+				"Presence of specific header in the response": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Snapshot_id is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Presence of specific header in the response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				185
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 200ms": true,
+					"Response has the required fields": true,
+					"Snapshot_id is a non-empty string": true,
+					"Content-Type header is application/json": true,
+					"Presence of specific header in the response": false
+				}
+			]
+		},
+		{
+			"id": "f787f285-e29e-4390-b5ab-3d168bd53897",
+			"name": "Remove Playlist Items",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+			"time": 171,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response has the required fields": true,
+				"Snapshot_id is a non-empty string": true,
+				"Content type is application/json": true,
+				"Response time is less than 200ms": true,
+				"Response has the required headers": false,
+				"Response headers contain the 'X-RateLimit-Limit' header": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Snapshot_id is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content type is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required headers": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response headers contain the 'X-RateLimit-Limit' header": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				171
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response has the required fields": true,
+					"Snapshot_id is a non-empty string": true,
+					"Content type is application/json": true,
+					"Response time is less than 200ms": true,
+					"Response has the required headers": false,
+					"Response headers contain the 'X-RateLimit-Limit' header": false
+				}
+			]
+		},
+		{
+			"id": "4be2333b-9eff-457c-9ad7-16ddfe7960b2",
+			"name": "Get Current User's Playlists",
+			"url": "https://api.spotify.com/v1/me/playlists?limit=10&offset=5",
+			"time": 237,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 500ms": true,
+				"Presence of Content-Type header in the response": true,
+				"Collaborative is a boolean value": true,
+				"Response time is less than 200ms": false,
+				"The response must be a JSON object": true,
+				"Items array images have valid URL format": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Presence of Content-Type header in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Collaborative is a boolean value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"The response must be a JSON object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Items array images have valid URL format": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				237
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 500ms": true,
+					"Presence of Content-Type header in the response": true,
+					"Collaborative is a boolean value": true,
+					"Response time is less than 200ms": false,
+					"The response must be a JSON object": true,
+					"Items array images have valid URL format": false
+				}
+			]
+		},
+		{
+			"id": "0f67a947-cf80-4f8d-b515-4765838500cc",
+			"name": "Get User's Playlists",
+			"url": "https://api.spotify.com/v1/users/u3u9p3y33vkz7uuowu1orb9oq/playlists?limit=10&offset=5",
+			"time": 218,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 200ms": false,
+				"Response is a valid JSON object": true,
+				"Verify the 'href' property exists and is a string": true,
+				"Verify the presence of the 'Content-Type' header in the response": true,
+				"Collaborative property in each item of 'items' array is a boolean": true,
+				"Validate external_urls property of each item in the 'items' array": true,
+				"Verify the presence of a specific cookie in the response": false,
+				"Total property is a non-negative integer": true,
+				"Each 'items' object has a non-empty 'id' property": true,
+				"Ensure owner object has non-empty display_name property in each item": true,
+				"Items array contains at least one image URL": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response is a valid JSON object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify the 'href' property exists and is a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify the presence of the 'Content-Type' header in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Collaborative property in each item of 'items' array is a boolean": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate external_urls property of each item in the 'items' array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify the presence of a specific cookie in the response": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Total property is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each 'items' object has a non-empty 'id' property": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ensure owner object has non-empty display_name property in each item": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Items array contains at least one image URL": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				218
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 200ms": false,
+					"Response is a valid JSON object": true,
+					"Verify the 'href' property exists and is a string": true,
+					"Verify the presence of the 'Content-Type' header in the response": true,
+					"Collaborative property in each item of 'items' array is a boolean": true,
+					"Validate external_urls property of each item in the 'items' array": true,
+					"Verify the presence of a specific cookie in the response": false,
+					"Total property is a non-negative integer": true,
+					"Each 'items' object has a non-empty 'id' property": true,
+					"Ensure owner object has non-empty display_name property in each item": true,
+					"Items array contains at least one image URL": false
+				}
+			]
+		},
+		{
+			"id": "659f70f2-4ff8-49f8-ba2d-4cb802e3a97f",
+			"name": "Create playlist",
+			"url": "https://api.spotify.com/v1/users/u3u9p3y33vkz7uuowu1orb9oq/playlists",
+			"time": 185,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Response status code is 201": true,
+				"Followers total is a non-negative integer": true,
+				"Tracks array is present and has expected number of elements": true,
+				"External URLs and owner objects are not empty": true,
+				"Response Content-Type header is application/json": true,
+				"Collaborative is a boolean": true,
+				"Description is a non-empty string": true,
+				"Response has primary_color, name, type, and uri fields": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Followers total is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Tracks array is present and has expected number of elements": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External URLs and owner objects are not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Collaborative is a boolean": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Description is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has primary_color, name, type, and uri fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				185
+			],
+			"allTests": [
+				{
+					"Response status code is 201": true,
+					"Followers total is a non-negative integer": true,
+					"Tracks array is present and has expected number of elements": true,
+					"External URLs and owner objects are not empty": true,
+					"Response Content-Type header is application/json": true,
+					"Collaborative is a boolean": true,
+					"Description is a non-empty string": true,
+					"Response has primary_color, name, type, and uri fields": true
+				}
+			]
+		},
+		{
+			"id": "65be6c2b-37fe-4ac3-acaf-cacfb530e737",
+			"name": "Get Featured Playlists",
+			"url": "https://api.spotify.com/v1/browse/featured-playlists?locale=sv_SE&limit=10&offset=5",
+			"time": 569,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response has the required fields - message, playlists": true,
+				"Response time is less than 200ms": false,
+				"Presence of 'Content-Type' header in the response": true,
+				"Images array is present and contains at least one element": true,
+				"Total tracks count should be a number": true,
+				"Presence of specific cookie in the response": false,
+				"Response content type is 'application/json'": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields - message, playlists": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Presence of 'Content-Type' header in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Images array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Total tracks count should be a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Presence of specific cookie in the response": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response content type is 'application/json'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				569
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response has the required fields - message, playlists": true,
+					"Response time is less than 200ms": false,
+					"Presence of 'Content-Type' header in the response": true,
+					"Images array is present and contains at least one element": true,
+					"Total tracks count should be a number": true,
+					"Presence of specific cookie in the response": false,
+					"Response content type is 'application/json'": true
+				}
+			]
+		},
+		{
+			"id": "dc61c563-9d00-42f3-b6f3-13d91ebba100",
+			"name": "Get Category's Playlists",
+			"url": "https://api.spotify.com/v1/browse/categories/rock/playlists?limit=10&offset=5",
+			"time": 239,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 200ms": false,
+				"Response Content-Type header is application/json": true,
+				"X-RateLimit-Limit header is present in the response": false,
+				"X-RateLimit-Limit header should not be present in the response": true,
+				"Playlists object is present in the response": true,
+				"Collaborative flag is either true or false": true,
+				"Description is a non-empty string or null": true,
+				"External URLs for Spotify are present and not empty": true,
+				"Name of the playlist is a non-empty string": true,
+				"Absence of 'primary_color' in the response body": true,
+				"Total value in 'tracks' object is a non-negative integer": true,
+				"Snapshot_id is a non-empty string or null": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"X-RateLimit-Limit header is present in the response": {
+					"pass": 0,
+					"fail": 1
+				},
+				"X-RateLimit-Limit header should not be present in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Playlists object is present in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Collaborative flag is either true or false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Description is a non-empty string or null": {
+					"pass": 1,
+					"fail": 0
+				},
+				"External URLs for Spotify are present and not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name of the playlist is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Absence of 'primary_color' in the response body": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Total value in 'tracks' object is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Snapshot_id is a non-empty string or null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				239
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 200ms": false,
+					"Response Content-Type header is application/json": true,
+					"X-RateLimit-Limit header is present in the response": false,
+					"X-RateLimit-Limit header should not be present in the response": true,
+					"Playlists object is present in the response": true,
+					"Collaborative flag is either true or false": true,
+					"Description is a non-empty string or null": true,
+					"External URLs for Spotify are present and not empty": true,
+					"Name of the playlist is a non-empty string": true,
+					"Absence of 'primary_color' in the response body": true,
+					"Total value in 'tracks' object is a non-negative integer": true,
+					"Snapshot_id is a non-empty string or null": true
+				}
+			]
+		},
+		{
+			"id": "7d516db9-cf28-4226-8d43-dd7cec61a45d",
+			"name": "Get Several Browse Categories",
+			"url": "https://api.spotify.com/v1/browse/categories?locale=sv_SE&limit=10&offset=5",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response Content-Type header is application/json": true,
+				"Categories object should exist and be an object": true,
+				"Items array is present and has the expected number of elements": false,
+				"Response time is less than 200ms": true,
+				"Verify the presence of the X-RateLimit-Limit header in the response": false,
+				"X-RateLimit-Limit header value is a positive integer": false,
+				"Name field in items array is a non-empty string": true,
+				"Next and previous fields should be either empty strings or valid URLs": true,
+				"Response body size is within the expected range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Categories object should exist and be an object": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Items array is present and has the expected number of elements": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify the presence of the X-RateLimit-Limit header in the response": {
+					"pass": 0,
+					"fail": 1
+				},
+				"X-RateLimit-Limit header value is a positive integer": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Name field in items array is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Next and previous fields should be either empty strings or valid URLs": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body size is within the expected range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				121
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response Content-Type header is application/json": true,
+					"Categories object should exist and be an object": true,
+					"Items array is present and has the expected number of elements": false,
+					"Response time is less than 200ms": true,
+					"Verify the presence of the X-RateLimit-Limit header in the response": false,
+					"X-RateLimit-Limit header value is a positive integer": false,
+					"Name field in items array is a non-empty string": true,
+					"Next and previous fields should be either empty strings or valid URLs": true,
+					"Response body size is within the expected range": true
+				}
+			]
+		},
+		{
+			"id": "91da46a8-ff0d-4b68-80c9-eb709154df69",
+			"name": "Get Playlist Cover Image",
+			"url": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/images",
+			"time": 132,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Your test name": false,
+				"Response time is less than 200ms": true,
+				"Successful POST request": false,
+				"Body matches string": false,
+				"Response status code is 200": true,
+				"Response is in JSON format": true,
+				"Response has the required fields - height, url, and width": true,
+				"Height and width are non-negative integers": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Your test name": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Successful POST request": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Body matches string": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is in JSON format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields - height, url, and width": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Height and width are non-negative integers": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				132
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Your test name": false,
+					"Response time is less than 200ms": true,
+					"Successful POST request": false,
+					"Body matches string": false,
+					"Response status code is 200": true,
+					"Response is in JSON format": true,
+					"Response has the required fields - height, url, and width": true,
+					"Height and width are non-negative integers": true
+				}
+			]
+		},
+		{
+			"id": "ce30611a-cbfe-4d6b-82b9-424a76df99ab",
+			"name": "Search for Item",
+			"url": "https://api.spotify.com/v1/search?q=currents&type=artist&market=ES&limit=10&offset=5&include_external=audio",
+			"time": 277,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response has the required fields": true,
+				"Items array is present and contains the expected number of elements": false,
+				"Response time is less than 300ms": true,
+				"Response Content-Type is application/json": true,
+				"Validate response body against a specific JSON schema": true,
+				"Followers object inside items array has a valid total value": true,
+				"Check for a specific value in the response body": false,
+				"Id in the items array is a non-empty string": true,
+				"Name in items array is a non-empty string": true,
+				"Images array in the items array contains valid image URLs": true,
+				"Popularity in items array is a non-negative integer": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Items array is present and contains the expected number of elements": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response time is less than 300ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Content-Type is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate response body against a specific JSON schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Followers object inside items array has a valid total value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check for a specific value in the response body": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Id in the items array is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name in items array is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Images array in the items array contains valid image URLs": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Popularity in items array is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				277
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response has the required fields": true,
+					"Items array is present and contains the expected number of elements": false,
+					"Response time is less than 300ms": true,
+					"Response Content-Type is application/json": true,
+					"Validate response body against a specific JSON schema": true,
+					"Followers object inside items array has a valid total value": true,
+					"Check for a specific value in the response body": false,
+					"Id in the items array is a non-empty string": true,
+					"Name in items array is a non-empty string": true,
+					"Images array in the items array contains valid image URLs": true,
+					"Popularity in items array is a non-negative integer": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3352,
+	"collection": {
+		"requests": [
+			{
+				"id": "eb2ead34-0bca-427f-9782-dec304701d92",
+				"method": "GET"
+			},
+			{
+				"id": "6401e0a5-faec-4571-8f56-3ff9197400fb",
+				"method": "GET"
+			},
+			{
+				"id": "2d4c54ac-206d-4250-8240-3b0b44367cc6",
+				"method": "GET"
+			},
+			{
+				"id": "b02ae8cf-2673-45ab-9c79-71d09fc8d7ac",
+				"method": "GET"
+			},
+			{
+				"id": "e41de077-c67a-424f-99a1-4235e9315a7a",
+				"method": "GET"
+			},
+			{
+				"id": "1b24cfcd-fca9-43ac-bc58-a60aebf924f6",
+				"method": "GET"
+			},
+			{
+				"id": "c3ba64d3-2ebb-4509-b630-116dea490d55",
+				"method": "PUT"
+			},
+			{
+				"id": "8f242b17-4135-4360-a3bc-fa7f31264e4e",
+				"method": "GET"
+			},
+			{
+				"id": "64295275-8b1d-4420-a858-7eaf95317b56",
+				"method": "PUT"
+			},
+			{
+				"id": "8fd5d437-b56e-45f2-ab75-408814797930",
+				"method": "POST"
+			},
+			{
+				"id": "f787f285-e29e-4390-b5ab-3d168bd53897",
+				"method": "DELETE"
+			},
+			{
+				"id": "4be2333b-9eff-457c-9ad7-16ddfe7960b2",
+				"method": "GET"
+			},
+			{
+				"id": "0f67a947-cf80-4f8d-b515-4765838500cc",
+				"method": "GET"
+			},
+			{
+				"id": "659f70f2-4ff8-49f8-ba2d-4cb802e3a97f",
+				"method": "POST"
+			},
+			{
+				"id": "65be6c2b-37fe-4ac3-acaf-cacfb530e737",
+				"method": "GET"
+			},
+			{
+				"id": "dc61c563-9d00-42f3-b6f3-13d91ebba100",
+				"method": "GET"
+			},
+			{
+				"id": "7d516db9-cf28-4226-8d43-dd7cec61a45d",
+				"method": "GET"
+			},
+			{
+				"id": "91da46a8-ff0d-4b68-80c9-eb709154df69",
+				"method": "GET"
+			},
+			{
+				"id": "ce30611a-cbfe-4d6b-82b9-424a76df99ab",
+				"method": "GET"
+			}
+		]
+	}
+}

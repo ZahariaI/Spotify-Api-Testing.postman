@@ -1,0 +1,3202 @@
+{
+	"info": {
+		"_postman_id": "b43a0fa2-aef1-4324-8ce3-aef07318c885",
+		"name": "Spotify Api Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33853202"
+	},
+	"item": [
+		{
+			"name": "Episodes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Show object should exist and be an object\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.show).to.exist.and.to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array is present and contains expected number of elements\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('images').that.is.an('array');\r",
+							"    pm.expect(responseData.images).to.have.lengthOf.at.least(1, \"Images array should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Name is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should be a non-empty string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Duration_ms is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.duration_ms).to.be.a('number').and.to.be.at.least(0, \"Duration_ms should be a non-negative integer\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Explicit field should be a boolean value\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.explicit).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Release date should be in a valid date format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.release_date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Show object has a non-empty name field\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.show).to.be.an('object');\r",
+							"  pm.expect(responseData.show.name).to.exist.and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External_urls should have a valid Spotify URL\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"\r",
+							"  pm.expect(responseData.external_urls).to.exist;\r",
+							"  pm.expect(responseData.external_urls.spotify).to.match(/^https:\\/\\/open\\.spotify\\.com\\/.*/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Audio preview URL is a valid URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.audio_preview_url).to.be.a('string');\r",
+							"    pm.expect(responseData.audio_preview_url).to.match(/^http(s)?:\\/\\/.+/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Description is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.description).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Description should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array contains valid URLs for each image\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.images).to.be.an('array');\r",
+							"    responseData.images.forEach(function(image) {\r",
+							"        pm.expect(image.url).to.be.a('string').and.to.match(/^http(s)?:\\/\\/.+/);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Language field should be a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.language).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Language field should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External URLs object should not be empty\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.external_urls).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Languages array should contain at least one language\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.languages).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External URLs should have a valid Spotify URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.external_urls).to.exist;\r",
+							"    pm.expect(responseData.external_urls.spotify).to.match(/^https:\\/\\/open\\.spotify\\.com\\/.*/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Audio preview URL is a valid URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.audio_preview_url).to.be.a('string');\r",
+							"    pm.expect(responseData.audio_preview_url).to.match(/^https?:\\/\\/.+/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Description is a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.description).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Description should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array contains valid URLs for each image\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.images).to.be.an('array');\r",
+							"    responseData.images.forEach(function(image) {\r",
+							"        pm.expect(image.url).to.be.a('string').and.to.match(/^http(s)?:\\/\\/.+/);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Language field should be a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.have.property('language').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Language should be a non-empty string\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External URLs object contains a valid Spotify URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.external_urls).to.be.an('object');\r",
+							"    pm.expect(responseData.external_urls.spotify).to.match(/^https:\\/\\/open\\.spotify\\.com\\/.*/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Is_playable field should be a boolean value\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.is_playable).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Release_date_precision should be a valid precision value\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.release_date_precision).to.be.oneOf(['day', 'month', 'year']);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Total_episodes under show should be a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.show.total_episodes).to.exist.and.to.be.a('number').and.to.satisfy(val => val >= 0, \"Total episodes should be a non-negative integer\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"All images should have non-negative integer values for height and width\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.images).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.images.forEach(function(image) {\r",
+							"        pm.expect(image.height).to.be.a('number').that.is.not.below(0);\r",
+							"        pm.expect(image.width).to.be.a('number').that.is.not.below(0);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"ID field should be a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"ID should be a non-empty string\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Href field should be a valid URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.href).to.match(/^https?:\\/\\/.+/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Uri field is a valid Spotify URI\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.uri).to.match(/^spotify:episode:[a-zA-Z0-9]+$/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Show object has a non-empty description field\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.show).to.be.an('object');\r",
+							"  pm.expect(responseData.show.description).to.exist.and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"});\r",
+							"\r",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response status code is 401\", function () {",
+							"    pm.expect(pm.response.code).to.equal(401);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response contains Content-Type header\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/episodes/512ojhOuo1ktJprKbVcKyQ",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"episodes",
+						"512ojhOuo1ktJprKbVcKyQ"
+					]
+				},
+				"description": "\nThis endpoint makes an HTTP GET request to retrieve information about a specific Spotify episode using its unique identifier. The response will be in JSON format with various details about the episode, such as audio preview URL, description, duration, explicit content flag, external URLs, images, language, release date, and other related information.\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Several Episodes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Fixed typo in response property name\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Explicit is true for both episodes and show\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('episodes').that.is.an('array');\r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode).to.have.property('explicit', true);\r",
+							"    });\r",
+							"\r",
+							"    pm.expect(responseData.show).to.have.property('explicit', true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response includes episodes array with at least one element\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.episodes).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Each episode has a non-empty name\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.episodes).to.be.an('array');\r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.name).to.exist.and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Release date is in a valid date format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.episodes).to.be.an('array');\r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.release_date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Each episode has a valid image URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.episodes).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.images).to.be.an('array').that.is.not.empty;\r",
+							"        \r",
+							"        episode.images.forEach(function(image) {\r",
+							"            pm.expect(image.url).to.be.a('string').and.to.match(/^https?:\\/\\/.+/);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Each episode id should be a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.episodes).to.be.an('array');\r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External URLs for each episode and the show are valid URLs\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    \r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.external_urls.spotify).to.match(/^https?:\\/\\/.+/);\r",
+							"    });\r",
+							"    \r",
+							"    pm.expect(responseData.show.external_urls.spotify).to.match(/^https?:\\/\\/.+/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Description for each episode and the show is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    \r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.description).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Description should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Duration_ms for each episode is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.episodes).to.be.an('array');\r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.duration_ms).to.be.a('number').and.to.be.at.least(0);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Show has a non-empty name\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.show).to.exist.and.to.have.property('name').to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Each episode has a non-empty language\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.episodes).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"    \r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.language).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Language should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array for each episode and show contains the expected number of elements\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.episodes).to.be.an('array');\r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.images).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"    });\r",
+							"\r",
+							"    pm.expect(responseData.show.images).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Languages array must contain at least one element for each episode and show\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    responseData.episodes.forEach(function(episode) {\r",
+							"        pm.expect(episode.languages).to.be.an('array').with.lengthOf.at.least(1);\r",
+							"    });\r",
+							"\r",
+							"    pm.expect(responseData.show.languages).to.be.an('array').with.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/episodes?ids=77o6BIVlYM3msb4MMIL1jH%2C0Q86acNRm6V9GYx55SXKwf",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"episodes"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "77o6BIVlYM3msb4MMIL1jH%2C0Q86acNRm6V9GYx55SXKwf"
+						}
+					]
+				},
+				"description": "\nThis endpoint makes an HTTP GET request to retrieve episodes from Spotify based on the provided episode IDs. The response will include details about the requested episodes, such as audio preview URL, description, duration, explicit content, external URLs, images, language, name, release date, and more.\n\nThe response will be in JSON format and will include an array of \"episodes\" with details about each episode, including its availability, copyrights, description, explicit content, external URLs, images, media type, name, publisher, total episodes, type, and URI.\n\nExample Response:\n```json\n{\n    \"episodes\": [\n        {\n            \"audio_preview_url\": \"\",\n            \"description\": \"\",\n            \"duration_ms\": 0,\n            \"explicit\": true,\n            \"external_urls\": {\n                \"spotify\": \"\"\n            },\n            \"href\": \"\",\n            \"html_description\": \"\",\n            \"id\": \"\",\n            \"images\": [\n                {\n                    \"height\": 0,\n                    \"url\": \"\",\n                    \"width\": 0\n                }\n            ],\n            \"is_externally_hosted\": true,\n            \"is_playable\": true,\n            \"language\": \"\",\n            \"languages\": [\"\"],\n            \"name\": \"\",\n            \"release_date\": \"\",\n            \"release_date_precision\": \"\",\n            \"show\": {\n                \"available_markets\": [\"\"],\n                \"copyrights\": [\"\"],\n                \"description\": \"\",\n                \"explicit\": true,\n                \"external_urls\": {\n                    \"spotify\": \"\"\n                },\n                \"href\": \"\",\n                \"html_description\": \"\",\n                \"id\": \"\",\n                \"images\": [\n                    {\n                        \"height\": 0,\n                        \"url\": \"\",\n                        \"width\": 0\n                    }\n                ],\n                \"is_externally_hosted\": true,\n                \"languages\": [\"\"],\n                \"media_type\": \"\",\n                \"name\": \"\",\n                \"publisher\": \"\",\n                \"total_episodes\": 0,\n                \"type\": \"\",\n                \"uri\": \"\"\n            },\n            \"type\": \"\",\n            \"uri\": \"\"\n        }\n    ]\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User's Saved Episodes",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/me/episodes?market=ES&limit=10&offset=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"me",
+						"episodes"
+					],
+					"query": [
+						{
+							"key": "market",
+							"value": "ES"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Available Genre Seeds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Genres array is present and not empty\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.genres).to.exist.and.to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/recommendations/available-genre-seeds",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"recommendations",
+						"available-genre-seeds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Available Markets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 300ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.markets).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The markets array should not be empty\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.markets).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/markets",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"markets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"// Test to check if the response contains a specific header\r",
+							"pm.test(\"Valid Content-Type header is present\", function() {\r",
+							"    pm.expect(pm.response.headers.has('Content-Type')).to.be.true.and.to.include('application/json');\r",
+							"});\r",
+							"// Test to check if the response contains a specific header\r",
+							"pm.test(\"Valid Content-Type header is present\", function() {\r",
+							"    pm.expect(pm.response.headers.has('Content-Type')).to.be.true.and.to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"Response body contains a non-empty 'id' field\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property('id').that.is.not.empty;\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"// Test to check for the presence of a specific error code in the response\r",
+							"pm.test(\"Response body contains a specific error code\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property('error').that.is.not.empty;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6"
+					]
+				},
+				"description": "\nThe endpoint retrieves information about a specific Spotify playlist. \n\nThe response returned is a JSON object with the following properties:\n- collaborative (boolean): Indicates if the playlist is collaborative.\n- description (string): The description of the playlist.\n- external_urls (object): External URLs for the playlist.\n- followers (object): Information about the followers of the playlist.\n- href (string): A link to the Spotify web API endpoint.\n- id (string): The Spotify ID of the playlist.\n- images (array): An array of playlist images, each represented as an object with url, width, and height properties.\n- name (string): The name of the playlist.\n- owner (object): Information about the owner of the playlist.\n- primary_color (string): The primary color of the playlist.\n- public (boolean): Indicates if the playlist is public.\n- snapshot_id (string): The snapshot ID of the playlist.\n- tracks (object): Information about the tracks in the playlist.\n- type (string): The type of the playlist.\n- uri (string): The Spotify URI of the playlist.\n\nThe response follows the JSON schema:\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"collaborative\": { \"type\": \"boolean\" },\n    \"description\": { \"type\": \"string\" },\n    \"external_urls\": { \"type\": \"object\" },\n    \"followers\": { \"type\": \"object\" },\n    \"href\": { \"type\": \"string\" },\n    \"id\": { \"type\": \"string\" },\n    \"images\": { \"type\": \"array\" },\n    \"name\": { \"type\": \"string\" },\n    \"owner\": { \"type\": \"object\" },\n    \"primary_color\": { \"type\": \"string\" },\n    \"public\": { \"type\": \"boolean\" },\n    \"snapshot_id\": { \"type\": \"string\" },\n    \"tracks\": { \"type\": \"object\" },\n    \"type\": { \"type\": \"string\" },\n    \"uri\": { \"type\": \"string\" }\n  }\n}\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Change Playlist Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response content type is text/xml\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/xml\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response body is not null\", function () {\r",
+							"    const responseData = xml2Json(pm.response.text());\r",
+							"\r",
+							"    pm.expect(responseData).to.not.be.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Club\",\r\n    \"description\": \"club\",\r\n    \"public\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Playlist Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response Content-Type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is in an acceptable range\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Response time is in an acceptable range\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each item in the items array has the required properties\", function () {\r",
+							"  pm.response.json().items.forEach(function(item) {\r",
+							"    pm.expect(item).to.have.property('href');\r",
+							"    pm.expect(item).to.have.property('track');\r",
+							"  });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6",
+						"tracks"
+					]
+				},
+				"description": "\nThis endpoint makes an HTTP GET request to retrieve the tracks of a specific playlist from the Spotify API.\n\n### Response\nThe response returns a JSON object with the following properties:\n- `href` (string): The URL of the current request.\n- `items` (array): An array of track items.\n- `limit` (number): The maximum number of items in the response.\n- `next` (string): The URL to the next page of results, if available.\n- `offset` (number): The offset of the items returned.\n- `previous` (string): The URL to the previous page of results, if available.\n- `total` (number): The total number of items available.\n\nHere is a JSON schema representing the structure of the response:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"href\": {\n      \"type\": \"string\"\n    },\n    \"items\": {\n      \"type\": \"array\"\n    },\n    \"limit\": {\n      \"type\": \"number\"\n    },\n    \"next\": {\n      \"type\": \"string\"\n    },\n    \"offset\": {\n      \"type\": \"number\"\n    },\n    \"previous\": {\n      \"type\": \"string\"\n    },\n    \"total\": {\n      \"type\": \"number\"\n    }\n  }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Playlist Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.snapshot_id).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Snapshot_id is a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.snapshot_id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Snapshot_id should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"// Test to check if the response contains a specific header\r",
+							"pm.test(\"Valid specific header is present\", function() {\r",
+							"  pm.expect(pm.response.headers.has('Specific-Header')).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Validate response body against a specific schema\", function () {\r",
+							"  var schema = {\r",
+							"    type: \"object\",\r",
+							"    properties: {\r",
+							"      snapshot_id: {\r",
+							"        type: \"string\",\r",
+							"        minLength: 1\r",
+							"      }\r",
+							"    },\r",
+							"    required: [\"snapshot_id\"],\r",
+							"  };\r",
+							"\r",
+							"  var response = pm.response.json();\r",
+							"  pm.expect(tv4.validate(response, schema)).to.be.true;\r",
+							"});\r",
+							"// Check for a specific value in the response body\r",
+							"pm.test(\"Snapshot_id is not an empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.snapshot_id).to.not.equal(\"\");\r",
+							"});\r",
+							"pm.test(\"Response content type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"range_start\": 1,\r\n    \"insert_before\": 3,\r\n    \"range_length\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6",
+						"tracks"
+					]
+				},
+				"description": "\nThis endpoint allows the user to update the tracks in a specific playlist on Spotify. The HTTP PUT request is made to the specified playlist endpoint with the playlist ID in the URL. The request payload includes parameters for range start, insert before, and range length.\n\n### Request Body\n- `range_start` (Number): Specifies the start index for the range of tracks to be updated.\n- `insert_before` (Number): Specifies the position where the tracks should be inserted.\n- `range_length` (Number): Specifies the length of the range of tracks to be updated.\n\n### Response\nThe response to this request is a JSON object with a status code of 200 and a content type of application/json. The response body includes a `snapshot_id` field, which is an empty string.\n\n### JSON Schema\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"snapshot_id\": {\n      \"type\": \"string\"\n    }\n  }\n}\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Items to Playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.snapshot_id).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Snapshot_id is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.snapshot_id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Snapshot_id should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.snapshot_id).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Snapshot_id is a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.snapshot_id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Snapshot_id should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Presence of specific header in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"application/json\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"uris\": [\r\n    \"spotify:track:4RBS6EFpwOwq2f6OMcIms4\"\r\n    ],\r\n    \"position\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Playlist Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.snapshot_id).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Snapshot_id is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.snapshot_id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Snapshot_id should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has the required headers\", function () {\r",
+							"    pm.expect(pm.response).to.have.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response headers contain the 'X-RateLimit-Limit' header\", function () {\r",
+							"    pm.expect(pm.response.headers.has(\"X-RateLimit-Limit\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Snapshot_id is a non-empty string\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.snapshot_id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Snapshot_id should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tracks\": [\r\n        {\r\n            \"uri\": \"spotify:track:4RBS6EFpwOwq2f6OMcIms4\"\r\n        }\r\n    ],\r\n    \"snapshot_id\": \"AAAAB/WKkpBN08YmJ+v8xp8aw/AA+Eou\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/tracks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Current User's Playlists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Presence of Content-Type header in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Collaborative is a boolean value\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.collaborative).to.be.a('boolean');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The response must be a JSON object\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Items array images have valid URL format\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.items).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        item.images.forEach(function(image) {\r",
+							"            pm.expect(image.url).to.match(/^https?:\\/\\/(?:www\\.)?[\\w-]+\\.[\\w]{2,}(?:\\/[\\w-./?%&=]*)?$/, \"Invalid URL format\");\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Presence of Content-Type header in the response\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Collaborative is a boolean value\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.items).to.be.an('array');\r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.collaborative).to.be.a('boolean');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Items array images have valid URL format\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"\r",
+							"  pm.expect(responseData.items).to.be.an('array');\r",
+							"  responseData.items.forEach(function(item) {\r",
+							"    pm.expect(item.images).to.be.an('array');\r",
+							"    item.images.forEach(function(image) {\r",
+							"      pm.expect(image.url).to.be.a('string').and.to.match(/^https?:\\/\\/.*/, \"URL should be valid\");\r",
+							"    });\r",
+							"  });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/me/playlists?limit=10&offset=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"me",
+						"playlists"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				},
+				"description": "\nThe endpoint retrieves a list of playlists belonging to the current user from the Spotify API. The response is a JSON object with the following schema:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"href\": { \"type\": \"string\" },\n    \"limit\": { \"type\": \"integer\" },\n    \"next\": { \"type\": [\"string\", \"null\"] },\n    \"offset\": { \"type\": \"integer\" },\n    \"previous\": { \"type\": \"string\" },\n    \"total\": { \"type\": \"integer\" },\n    \"items\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"collaborative\": { \"type\": \"boolean\" },\n          \"description\": { \"type\": \"string\" },\n          \"external_urls\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"spotify\": { \"type\": \"string\" }\n            }\n          },\n          \"href\": { \"type\": \"string\" },\n          \"id\": { \"type\": \"string\" },\n          \"images\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"height\": { \"type\": [\"integer\", \"null\"] },\n                \"url\": { \"type\": \"string\" },\n                \"width\": { \"type\": [\"integer\", \"null\"] }\n              }\n            }\n          },\n          \"name\": { \"type\": \"string\" },\n          \"owner\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"display_name\": { \"type\": \"string\" },\n              \"external_urls\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"spotify\": { \"type\": \"string\" }\n                }\n              },\n              \"href\": { \"type\": \"string\" },\n              \"id\": { \"type\": \"string\" },\n              \"type\": { \"type\": \"string\" },\n              \"uri\": { \"type\": \"string\" }\n            }\n          },\n          \"primary_color\": { \"type\": \"string\" },\n          \"public\": { \"type\": \"boolean\" },\n          \"snapshot_id\": { \"type\": \"string\" },\n          \"tracks\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"href\": { \"type\": \"string\" },\n              \"total\": { \"type\": \"integer\" }\n            }\n          },\n          \"type\": { \"type\": \"string\" },\n          \"uri\": { \"type\": \"string\" }\n        }\n      }\n    }\n  }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User's Playlists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is a valid JSON object\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify the 'href' property exists and is a string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.href).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify the presence of the 'Content-Type' header in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Collaborative property in each item of 'items' array is a boolean\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.items).to.be.an('array');\r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.collaborative).to.be.a('boolean');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate external_urls property of each item in the 'items' array\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.items).to.be.an('array');\r",
+							"\r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.external_urls).to.exist.and.to.be.an('object');\r",
+							"        pm.expect(item.external_urls.spotify).to.be.a('string');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify the presence of a specific cookie in the response\", function () {\r",
+							"    pm.expect(pm.response.cookies.has('specific_cookie')).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Total property is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.total).to.be.a('number');\r",
+							"    pm.expect(responseData.total).to.be.at.least(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Each 'items' object has a non-empty 'id' property\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.items).to.be.an('array');\r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.id).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"ID should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Ensure owner object has non-empty display_name property in each item\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.items).to.be.an('array');\r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.owner).to.exist.and.to.be.an('object');\r",
+							"        pm.expect(item.owner.display_name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Display name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Items array contains at least one image URL\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.items).to.be.an('array');\r",
+							"    responseData.items.forEach(function(item) {\r",
+							"        pm.expect(item.images).to.be.an('array');\r",
+							"        item.images.forEach(function(image) {\r",
+							"            pm.expect(image.url).to.be.a('string').and.to.have.lengthOf.at.least(1);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/users/u3u9p3y33vkz7uuowu1orb9oq/playlists?limit=10&offset=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"u3u9p3y33vkz7uuowu1orb9oq",
+						"playlists"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				},
+				"description": "\nThe endpoint retrieves a list of playlists for a specific user from the Spotify API. The response is in JSON format and includes the following schema:\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"href\": {\"type\": \"string\"},\n        \"limit\": {\"type\": \"integer\"},\n        \"next\": {\"type\": [\"string\", \"null\"]},\n        \"offset\": {\"type\": \"integer\"},\n        \"previous\": {\"type\": \"string\"},\n        \"total\": {\"type\": \"integer\"},\n        \"items\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"collaborative\": {\"type\": \"boolean\"},\n                    \"description\": {\"type\": \"string\"},\n                    \"external_urls\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"spotify\": {\"type\": \"string\"}\n                        }\n                    },\n                    \"href\": {\"type\": \"string\"},\n                    \"id\": {\"type\": \"string\"},\n                    \"images\": {\n                        \"type\": \"array\",\n                        \"items\": {\n                            \"type\": \"object\",\n                            \"properties\": {\n                                \"height\": {\"type\": [\"integer\", \"null\"]},\n                                \"url\": {\"type\": \"string\"},\n                                \"width\": {\"type\": [\"integer\", \"null\"]}\n                            }\n                        }\n                    },\n                    \"name\": {\"type\": \"string\"},\n                    \"owner\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"display_name\": {\"type\": \"string\"},\n                            \"external_urls\": {\n                                \"type\": \"object\",\n                                \"properties\": {\n                                    \"spotify\": {\"type\": \"string\"}\n                                }\n                            },\n                            \"href\": {\"type\": \"string\"},\n                            \"id\": {\"type\": \"string\"},\n                            \"type\": {\"type\": \"string\"},\n                            \"uri\": {\"type\": \"string\"}\n                        }\n                    },\n                    \"primary_color\": {\"type\": \"string\"},\n                    \"public\": {\"type\": \"boolean\"},\n                    \"snapshot_id\": {\"type\": \"string\"},\n                    \"tracks\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"href\": {\"type\": \"string\"},\n                            \"total\": {\"type\": \"integer\"}\n                        }\n                    },\n                    \"type\": {\"type\": \"string\"},\n                    \"uri\": {\"type\": \"string\"}\n                }\n            }\n        }\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Create playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 201\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Followers total is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.followers.total).to.be.a('number');\r",
+							"    pm.expect(responseData.followers.total).to.be.at.least(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Tracks array is present and has expected number of elements\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('tracks');\r",
+							"    pm.expect(responseData.tracks).to.be.an('object');\r",
+							"    pm.expect(responseData.tracks.items).to.be.an('array');\r",
+							"    pm.expect(responseData.tracks.items).to.have.lengthOf(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External URLs and owner objects are not empty\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.external_urls).to.not.be.empty;\r",
+							"    pm.expect(responseData.owner).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Collaborative is a boolean\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.collaborative).to.be.a('boolean');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Description is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.description).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Description should not be empty\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has primary_color, name, type, and uri fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.include.all.keys('primary_color', 'name', 'type', 'uri');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dance\",\r\n    \"description\": \"Dance description\",\r\n    \"public\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/users/u3u9p3y33vkz7uuowu1orb9oq/playlists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"u3u9p3y33vkz7uuowu1orb9oq",
+						"playlists"
+					]
+				},
+				"description": "\n### Create a Playlist\nThis endpoint allows you to create a new playlist for a specific user on Spotify.\n\n- Request body should be in raw format with the following parameters:\n    - `name` (string, required): The name of the playlist.\n    - `description` (string, optional): A description of the playlist.\n    - `public` (boolean, required): Indicates if the playlist is public.\n\n#### Response\nUpon successful creation, the endpoint returns a status code of 201 and a JSON object with details of the newly created playlist, including its collaborative status, description, owner details, and public visibility.\n\nExample response:\n```json\n{\n    \"collaborative\": true,\n    \"description\": \"\",\n    \"external_urls\": {\n        \"spotify\": \"\"\n    },\n    \"followers\": {\n        \"href\": null,\n        \"total\": 0\n    },\n    \"href\": \"\",\n    \"id\": \"\",\n    \"images\": [],\n    \"primary_color\": null,\n    \"name\": \"\",\n    \"type\": \"\",\n    \"uri\": \"\",\n    \"owner\": {\n        \"href\": \"\",\n        \"id\": \"\",\n        \"type\": \"\",\n        \"uri\": \"\",\n        \"display_name\": null,\n        \"external_urls\": {\n            \"spotify\": \"\"\n        }\n    },\n    \"public\": true,\n    \"snapshot_id\": \"\",\n    \"tracks\": {\n        \"limit\": 0,\n        \"next\": null,\n        \"offset\": 0,\n        \"previous\": null,\n        \"href\": \"\",\n        \"total\": 0,\n        \"items\": []\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Featured Playlists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields - message, playlists\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.property('message');\r",
+							"    pm.expect(responseData).to.have.property('playlists');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Presence of 'Content-Type' header in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array is present and contains at least one element\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    pm.expect(responseData.playlists.items).to.have.lengthOf.at.least(1, \"Images array should contain at least one element\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Total tracks count should be a number\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    responseData.playlists.items.forEach(function(item) {\r",
+							"        pm.expect(item.tracks.total).to.be.a('number');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array is present and contains at least one element\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    pm.expect(responseData.playlists.items).to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Total tracks count should be a number\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    responseData.playlists.items.forEach(function(item) {\r",
+							"        pm.expect(item.tracks.total).to.be.a('number');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Presence of 'Content-Type' header in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Presence of specific cookie in the response\", function () {\r",
+							"    const cookies = pm.response.cookies();\r",
+							"    \r",
+							"    pm.expect(cookies).to.have.property('specificCookie');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response content type is 'application/json'\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields - message, playlists\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.have.property('message');\r",
+							"    pm.expect(responseData).to.have.property('playlists');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Presence of specific cookie in the response\", function () {\r",
+							"    const cookies = pm.response.cookies();\r",
+							"    pm.expect(cookies).to.have.property('specific_cookie');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/browse/featured-playlists?locale=sv_SE&limit=10&offset=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"browse",
+						"featured-playlists"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "sv_SE"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				},
+				"description": "\nThe endpoint https://api.spotify.com/v1/browse/featured-playlists retrieves a list of featured playlists. The response is a JSON object with the following schema:\n\n```json\n{\n  \"message\": \"\",\n  \"playlists\": {\n    \"href\": \"\",\n    \"items\": [\n      {\n        \"collaborative\": true,\n        \"description\": \"\",\n        \"external_urls\": {\n          \"spotify\": \"\"\n        },\n        \"href\": \"\",\n        \"id\": \"\",\n        \"images\": [\n          {\n            \"height\": null,\n            \"url\": \"\",\n            \"width\": null\n          }\n        ],\n        \"name\": \"\",\n        \"owner\": {\n          \"display_name\": \"\",\n          \"external_urls\": {\n            \"spotify\": \"\"\n          },\n          \"href\": \"\",\n          \"id\": \"\",\n          \"type\": \"\",\n          \"uri\": \"\"\n        },\n        \"primary_color\": \"\",\n        \"public\": true,\n        \"snapshot_id\": \"\",\n        \"tracks\": {\n          \"href\": \"\",\n          \"total\": 0\n        },\n        \"type\": \"\",\n        \"uri\": \"\"\n      }\n    ],\n    \"limit\": 0,\n    \"next\": \"\",\n    \"offset\": 0,\n    \"previous\": \"\",\n    \"total\": 0\n  }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Category's Playlists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"X-RateLimit-Limit header is present in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.has(\"X-RateLimit-Limit\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"X-RateLimit-Limit header should not be present in the response\", function () {\r",
+							"    pm.expect(pm.response.headers.has(\"X-RateLimit-Limit\")).to.be.false;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Playlists object is present in the response\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('playlists');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Collaborative flag is either true or false\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    responseData.playlists.items.forEach(item => {\r",
+							"        pm.expect(item.collaborative).to.be.a('boolean');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Description is a non-empty string or null\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    responseData.playlists.items.forEach(function(item) {\r",
+							"        pm.expect(item.description).to.satisfy((val) => {\r",
+							"            return typeof val === 'string' || val === null;\r",
+							"        }, \"Description should be a non-empty string or null\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"External URLs for Spotify are present and not empty\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.playlists.items).to.be.an('array').and.not.empty;\r",
+							"  \r",
+							"  responseData.playlists.items.forEach(function(item) {\r",
+							"    pm.expect(item.external_urls.spotify).to.exist.and.to.not.be.empty;\r",
+							"  });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Name of the playlist is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    responseData.playlists.items.forEach(function(item) {\r",
+							"        pm.expect(item.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Absence of 'primary_color' in the response body\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData).to.be.an('object');\r",
+							"  pm.expect(responseData.primary_color).to.not.exist;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Total value in 'tracks' object is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    responseData.playlists.items.forEach(function(item) {\r",
+							"        pm.expect(item.tracks.total).to.be.a('number');\r",
+							"        pm.expect(item.tracks.total).to.be.at.least(0);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Snapshot_id is a non-empty string or null\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData.playlists.items).to.be.an('array');\r",
+							"    responseData.playlists.items.forEach(function(item) {\r",
+							"        pm.expect(item.snapshot_id).to.satisfy(function (value) {\r",
+							"            return typeof value === 'string' || value === null;\r",
+							"        }, \"Snapshot_id should be a non-empty string or null\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/browse/categories/rock/playlists?limit=10&offset=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"browse",
+						"categories",
+						"rock",
+						"playlists"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				},
+				"description": "\nThe endpoint retrieves a list of rock playlists from the Spotify API. The response is in JSON format and includes a message field and a playlists field. The playlists field contains an array of items, each representing a playlist. Each playlist item includes various attributes such as collaborative, description, external_urls, href, id, images, name, owner, primary_color, public, snapshot_id, tracks, type, and uri. The tracks attribute provides information about the total number of tracks in the playlist. Here is the JSON schema for the response:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": { \"type\": \"string\" },\n    \"playlists\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"href\": { \"type\": \"string\" },\n        \"items\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"collaborative\": { \"type\": \"boolean\" },\n              \"description\": { \"type\": \"string\" },\n              \"external_urls\": { \"type\": \"object\" },\n              \"href\": { \"type\": \"string\" },\n              \"id\": { \"type\": \"string\" },\n              \"images\": {\n                \"type\": \"array\",\n                \"items\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"height\": { \"type\": \"number\" },\n                    \"url\": { \"type\": \"string\" },\n                    \"width\": { \"type\": \"number\" }\n                  }\n                }\n              },\n              \"name\": { \"type\": \"string\" },\n              \"owner\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"display_name\": { \"type\": \"string\" },\n                  \"external_urls\": { \"type\": \"object\" },\n                  \"href\": { \"type\": \"string\" },\n                  \"id\": { \"type\": \"string\" },\n                  \"type\": { \"type\": \"string\" },\n                  \"uri\": { \"type\": \"string\" }\n                }\n              },\n              \"primary_color\": { \"type\": \"string\" },\n              \"public\": { \"type\": \"boolean\" },\n              \"snapshot_id\": { \"type\": \"string\" },\n              \"tracks\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"href\": { \"type\": \"string\" },\n                  \"total\": { \"type\": \"number\" }\n                }\n              },\n              \"type\": { \"type\": \"string\" },\n              \"uri\": { \"type\": \"string\" }\n            }\n          }\n        },\n        \"limit\": { \"type\": \"number\" },\n        \"next\": { \"type\": \"string\" },\n        \"offset\": { \"type\": \"number\" },\n        \"previous\": { \"type\": \"string\" },\n        \"total\": { \"type\": \"number\" }\n      }\n    }\n  }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Several Browse Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Fixed the 'isValidUrl' reference error\r",
+							"function isValidUrl(url) {\r",
+							"    // Add your URL validation logic here\r",
+							"    return true; // For demonstration purposes, always return true\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Categories object should exist and be an object\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.categories).to.exist.and.to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Items array is present and has the expected number of elements\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.have.property('categories');\r",
+							"    pm.expect(responseData.categories).to.have.property('items').that.is.an('array').and.to.have.lengthOf(1);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify the presence of the X-RateLimit-Limit header in the response\", function () {\r",
+							"    pm.response.to.have.header(\"X-RateLimit-Limit\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"X-RateLimit-Limit header value is a positive integer\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"X-RateLimit-Limit\")).to.match(/^\\d+$/);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Name field in items array is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.categories).to.exist.and.to.be.an('object');\r",
+							"    pm.expect(responseData.categories.items).to.be.an('array').and.to.not.be.empty;\r",
+							"    \r",
+							"    responseData.categories.items.forEach(function(item) {\r",
+							"        pm.expect(item.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Next and previous fields should be either empty strings or valid URLs\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.next).to.satisfy((value) => value === \"\" || isValidUrl(value), \"Next field should be either an empty string or a valid URL\");\r",
+							"    pm.expect(responseData.previous).to.satisfy((value) => value === \"\" || isValidUrl(value), \"Previous field should be either an empty string or a valid URL\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body size is within the expected range\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('categories');\r",
+							"    pm.expect(responseData.categories).to.have.property('items');\r",
+							"    pm.expect(responseData.categories.items).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/browse/categories?locale=sv_SE&limit=10&offset=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"browse",
+						"categories"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "sv_SE"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				},
+				"description": "\nThis endpoint makes an HTTP GET request to retrieve a list of categories from the Spotify API. The request includes query parameters for locale, limit, and offset to specify the language, number of categories to retrieve, and the offset for pagination, respectively.\n\n### Response\nThe response returned is a JSON object with a \"categories\" key containing an array of category items. Each category item includes \"href\", \"id\", \"icons\" (an array of objects with \"height\", \"url\", and \"width\" properties), and \"name\" properties. Additionally, the response includes \"limit\", \"next\", \"offset\", \"previous\", and \"total\" properties to manage pagination.\n\n```json\n{\n  \"categories\": {\n    \"href\": \"\",\n    \"items\": [\n      {\n        \"href\": \"\",\n        \"id\": \"\",\n        \"icons\": [\n          {\n            \"height\": 0,\n            \"url\": \"\",\n            \"width\": 0\n          }\n        ],\n        \"name\": \"\"\n      }\n    ],\n    \"limit\": 0,\n    \"next\": \"\",\n    \"offset\": 0,\n    \"previous\": \"\",\n    \"total\": 0\n  }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Playlist Cover Image",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(100);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+							"});",
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response is in JSON format\", function () {",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - height, url, and width\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    ",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item).to.have.property('height');",
+							"        pm.expect(item).to.have.property('url');",
+							"        pm.expect(item).to.have.property('width');",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Height and width are non-negative integers\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+							"    ",
+							"    responseData.forEach(function(image) {",
+							"        pm.expect(image.height).to.be.a('number').and.to.be.at.least(0);",
+							"        pm.expect(image.width).to.be.a('number').and.to.be.at.least(0);",
+							"    });",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/1t5MQZxNSjpj7EIYHa8NN6/images",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"1t5MQZxNSjpj7EIYHa8NN6",
+						"images"
+					]
+				},
+				"description": "\nThis endpoint makes an HTTP GET request to retrieve the images associated with a specific Spotify playlist. The response returned is a JSON object with an array containing image details. Below is the JSON schema for the response:\n\n```json\n[\n  {\n    \"height\": 0,\n    \"url\": \"\",\n    \"width\": 0\n  }\n]\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Search for Item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has the required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData).to.have.property('artists');\r",
+							"    pm.expect(responseData.artists).to.have.all.keys('href', 'items', 'limit', 'next', 'offset', 'previous', 'total');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Items array is present and contains the expected number of elements\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.have.property('artists');\r",
+							"    pm.expect(responseData.artists).to.have.property('items').that.is.an('array').and.to.have.lengthOf(1);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 300ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Content-Type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validate response body against a specific JSON schema\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"\r",
+							"    // Write your JSON schema validation logic here\r",
+							"    // Example: pm.expect(responseData).to.have.property('artists').that.is.an('object');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Followers object inside items array has a valid total value\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.artists.items).to.be.an('array').and.to.not.be.empty;\r",
+							"  \r",
+							"  responseData.artists.items.forEach(function(item) {\r",
+							"    pm.expect(item.followers.total).to.be.a('number').and.to.be.at.least(0);\r",
+							"  });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check for a specific value in the response body\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.artists.items[0].popularity).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Id in the items array is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.artists.items).to.be.an('array');\r",
+							"    responseData.artists.items.forEach(function(item) {\r",
+							"        pm.expect(item.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should be a non-empty string\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Name in items array is a non-empty string\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData.artists.items).to.be.an('array');\r",
+							"    responseData.artists.items.forEach(function(item) {\r",
+							"        pm.expect(item.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Images array in the items array contains valid image URLs\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  pm.expect(responseData.artists.items).to.be.an('array');\r",
+							"  responseData.artists.items.forEach(function(item) {\r",
+							"    pm.expect(item.images).to.be.an('array');\r",
+							"    item.images.forEach(function(image) {\r",
+							"      pm.expect(image.url).to.be.a('string').and.to.match(/^https?:\\/\\/.*/, \"Invalid image URL\");\r",
+							"    });\r",
+							"  });\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Popularity in items array is a non-negative integer\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData.artists.items).to.be.an('array');\r",
+							"    \r",
+							"    responseData.artists.items.forEach(function(item) {\r",
+							"        pm.expect(item.popularity).to.be.a('number');\r",
+							"        pm.expect(item.popularity).to.be.at.least(0, \"Popularity should be a non-negative integer\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "7280a48120974612b5555c71bda865b1",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://accounts.spotify.com/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "278a6a0526f142009923f96e2d677256",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://accounts.spotify.com/api/token",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Spotify API",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?q=currents&type=artist&market=ES&limit=10&offset=5&include_external=audio",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "currents"
+						},
+						{
+							"key": "type",
+							"value": "artist"
+						},
+						{
+							"key": "market",
+							"value": "ES"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						},
+						{
+							"key": "include_external",
+							"value": "audio"
+						}
+					]
+				},
+				"description": "\nThe endpoint retrieves a list of artists from the Spotify API based on the search query and specified parameters. The response returns a JSON object with an \"artists\" key containing an array of artist items, each including details such as external URLs, followers, genres, images, name, popularity, type, and URI. The \"limit\", \"next\", \"offset\", \"previous\", and \"total\" keys provide pagination information for navigating through the results.\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"artists\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"href\": { \"type\": \"string\" },\n        \"items\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"external_urls\": { \"type\": \"object\" },\n              \"followers\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"href\": { \"type\": [\"string\", \"null\"] },\n                  \"total\": { \"type\": \"integer\" }\n                }\n              },\n              \"genres\": {\n                \"type\": \"array\",\n                \"items\": { \"type\": \"string\" }\n              },\n              \"href\": { \"type\": \"string\" },\n              \"id\": { \"type\": \"string\" },\n              \"images\": {\n                \"type\": \"array\",\n                \"items\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"height\": { \"type\": \"integer\" },\n                    \"url\": { \"type\": \"string\" },\n                    \"width\": { \"type\": \"integer\" }\n                  }\n                }\n              },\n              \"name\": { \"type\": \"string\" },\n              \"popularity\": { \"type\": \"integer\" },\n              \"type\": { \"type\": \"string\" },\n              \"uri\": { \"type\": \"string\" }\n            }\n          }\n        },\n        \"limit\": { \"type\": \"integer\" },\n        \"next\": { \"type\": [\"string\", \"null\"] },\n        \"offset\": { \"type\": \"integer\" },\n        \"previous\": { \"type\": [\"string\", \"null\"] },\n        \"total\": { \"type\": \"integer\" }\n      }\n    }\n  }\n}\n```\n"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "7229553df815476e9e96fcab83a32245",
+				"type": "string"
+			},
+			{
+				"key": "useBrowser",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "scope",
+				"value": "playlist-modify-public playlist-read-private playlist-modify-private",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "7280a48120974612b5555c71bda865b1",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://accounts.spotify.com/api/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://accounts.spotify.com/authorize",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://oauth.pstmn.io/v1/browser-callback",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
